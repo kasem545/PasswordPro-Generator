@@ -29,10 +29,10 @@ def crack(keywords, len):
     # call for all required lengths
     for i in range(1 , len + 1):
         generate(keywords, i, "", len)
+     
+'''  You can edit keywords=[] and add any data you like about your victim,
+as the following keyword = ['BIRTHDATE', 'NAME', 'LASTNAME','ZIP'] ANY info you have about your victim '''
 
 keywords = ['INPUTS']
 len = len(keywords)
 crack(keywords, len)
-
-''' You can edit keywords=[] and add any data you like about your victim,
-as the following keyword = ['BIRTHDATE', 'NAME', 'LASTNAME','ZIP'] ANY info you have about your victim '''
