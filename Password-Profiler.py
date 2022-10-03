@@ -1,8 +1,6 @@
 #!/usr/bin/python3
-from ast import arg
 
-
-def generate(arr, i, s, len):
+def generate(keywords, i, s, len):
  
     # base case
     if (i == 0): # when len has
@@ -12,26 +10,29 @@ def generate(arr, i, s, len):
         print(s)
         return
      
-    # iterate through the array
+    # iterate through the keywordsay
     for j in range(0, len):
  
         # Create new string with
         # next character Call
         # generate again until
         # string has reached its len
-        appended = s + arr[j]
-        generate(arr, i - 1, appended, len)
+        appended = s + keywords[j]
+        generate(keywords, i - 1, appended, len)
  
     return
  
 # function to generate
 # all possible passwords
-def crack(arr, len):
+def crack(keywords, len):
  
     # call for all required lengths
     for i in range(1 , len + 1):
-        generate(arr, i, "", len)
+        generate(keywords, i, "", len)
 
-arr = ['INPUTS']
-len = len(arr)
-crack(arr, len)
+keywords = ['INPUTS']
+len = len(keywords)
+crack(keywords, len)
+
+''' You can edit keywords=[] and add any data you like about your victim,
+as the following keyword = ['BIRTHDATE', 'NAME', 'LASTNAME','ZIP'] ANY info you have about your victim '''
