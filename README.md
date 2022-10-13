@@ -5,7 +5,6 @@ Password-Profiler uses a user input to make all possible combinations
 create a text file containing a user information like -> Name, last, ID, PhoneNumber, birthdate, any info you have on target
 
 Usage: 
-
     --cap option will capitalize the first letter of each Word.
     --up option will transform every letter in a word into uppercase.
     --append=VALUE option will append any given word to all passwords.
