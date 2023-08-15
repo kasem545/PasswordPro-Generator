@@ -64,9 +64,10 @@ def init_argparse() -> argparse.ArgumentParser:
                         required=False)
     parser.add_argument('--prepend', help='Prepend chosen word (prepend \'word\' to all passwords)',
                         required=False)
+    parser.add_argument('--getchar', help='Extract a substring from words at the specified index to append',
+                          required=False, type=int)
+
     return parser
-
-
 def printer(combo_printer: List) -> set:
     """
     Print generated words to stdout and in case apply chosen mutagens (append, prepend, leet).
@@ -130,6 +131,21 @@ def leet(line_leet: str) -> str:
     if args.prepend is not None:
         yield f'{args.prepend}{line_leet}'
 
+def get_substr_from_word(word: str, length: int) -> str:
+    """
+    Get a substring from the beginning of the input word.
+
+    :param word: The input word from which to extract the substring.
+    :type word: str
+    :param length: The length of the substring to extract.
+    :type length: int
+    :return: The extracted substring.
+    :rtype: str
+    """
+    if length < 0 or length > len(word):
+        raise ValueError("Invalid length value")
+    
+    return word[:length]
 
 def test_printer(x_test: int, out_counter_test: int) -> int:
     """Test printer."""
@@ -235,5 +251,15 @@ if __name__ == '__main__':
                     if my_line not in definitive:
                         definitive.add(my_line)
                         f_out.write(my_line)
+                        if args.getchar is not None:
+                            try:
+                                length = int(args.getchar)
+                                input_words = my_line.strip().split()  # Split the line into words
+                                for input_word in input_words:
+                                    substring = get_substr_from_word(input_word, length)
+                                    f_out.write(f"{input_word}{substring}\n")  # Append the substring
+                                    #f_out.write(f"{substring}{input_word}\n") # To be tested
+                            except ValueError:
+                                pass
         remove(TEMP_OUTPUT_FILE)
         print('\nOutput saved to \'output.txt\'!\n')
