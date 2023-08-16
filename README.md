@@ -1,6 +1,6 @@
-# Password-Profiler 
+# Password-Profiler Generator
 
-Password-Profiler loads user input to make all possible combinations
+Password-Profiler Generator loads user input to make all possible combinations
 
 create a text file containing a user information like -> Name, last, ID, PhoneNumber, birthdate, any info you have on target
 
